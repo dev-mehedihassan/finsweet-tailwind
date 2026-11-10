@@ -6,6 +6,7 @@ import Anchor from '../ui/Anchor'
 import { menuData } from '../../dummyData/menuData'
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import { AnimatePresence, motion } from 'framer-motion'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,14 +39,27 @@ const Navbar = () => {
             </div>
         </Container>
     </nav>
-    {isOpen && (
-        <div 
-          onClick={() => setIsOpen(false)} 
-          className="fixed top-0 right-0 bottom-0 left-0 bg-black/60 z-40 transition-opacity lg:hidden"
-        />
-      )}
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            key="sidebar-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed top-0 right-0 bottom-0 left-0 bg-black/60 z-40 lg:hidden"
+          />
 
-      <div className={`fixed top-0 right-0 h-full w-[280px] bg-brand-dark z-50 transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col p-6 shadow-2xl ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <motion.div
+            key="sidebar"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="fixed top-0 right-0 h-full w-[280px] bg-brand-dark z-50 lg:hidden flex flex-col p-6 shadow-2xl"
+          >
           <div className="flex items-center justify-between mb-8">
             <span className="text-white font-roboto font-semibold text-lg">Menu</span>
             <button 
@@ -76,7 +90,10 @@ const Navbar = () => {
                   CONTACT US
               </button>
           </div>
-      </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
     </>
   )
 }
