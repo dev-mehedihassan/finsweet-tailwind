@@ -5,4 +5,13 @@
   --color-brand-peach: #FFDDA4;
 
   --font-roboto: "Roboto Condensed", sans-serif;
+
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 1920px;
 }
