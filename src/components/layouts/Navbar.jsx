@@ -1,16 +1,14 @@
 import React from 'react'
 import Container from '../common/Container'
 import logo from '../../assets/logo.png'
+import Image from '../common/Image'
 
 const Navbar = () => {
   return (
     <nav className="bg-brand-dark px-16 py-6 flex items-center justify-between text-white">
         <Container>
-            
+            <Image src={logo} alt="Finsweet Logo" />
         </Container>
-      <div className="w-[1280px] mx-auto text-2xl font-bold tracking-tight">
-        <span className="text-brand-peach">{'{'}</span>finsweet
-      </div>
 
       <ul className="flex items-center gap-12 text-sm font-medium tracking-wider">
         <li>
