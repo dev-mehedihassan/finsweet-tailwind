@@ -1,20 +1,24 @@
-import { createRoutesFromElements } from "react-router-dom";
+import { BrowserRouter, Routes, createRoutesFromElements, Route, RouterProvider, createBrowserRouter } from "react-router";
 import HomeIndex from "./pages/homepage/HomeIndex"
+import RootLayout from "./components/layouts/RootLayout";
 
 const routes = createRoutesFromElements(
-  <>
-    <Route index loader={step1Loader} Component={StepOne} />
-    <Route path="step-2" loader={step2Loader} Component={StepTwo} />
-    <Route path="step-3" loader={step3Loader} Component={StepThree} />
-  </>
+  <Route element={<RootLayout />}>
+    <Route path="/" element={<HomeIndex />} />
+    <Route path="/about" element={"About Us Page"}  />
+    <Route path="/sermon" element={"Sermon Page"}  />
+    <Route path="/blog" element={"Blog Page"}  />
+  </Route>
 );
+
+const router = createBrowserRouter(routes);
 
 
 function App() {
 
   return (
     <>
-      <HomeIndex />
+      <RouterProvider router={router} />
     </>
   )
 }
