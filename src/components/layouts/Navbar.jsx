@@ -7,6 +7,7 @@ import { menuData } from '../../dummyData/menuData'
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { AnimatePresence, motion } from 'framer-motion'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -23,9 +24,9 @@ const Navbar = () => {
                     <ul className="hidden lg:flex items-center gap-12">
                         {menuData.map((item, index) =>(
                             <li key={index}>
-                                <Anchor href={item.url} className="font-normal text-base uppercase text-white font-roboto hover:text-brand-peach transition-colors">
+                                <NavLink to={item.url} className="font-normal text-base uppercase text-white font-roboto hover:text-brand-peach transition-colors">
                                     {item.label}
-                                </Anchor>
+                                </NavLink>
                             </li>
                         ))}
                     </ul>
