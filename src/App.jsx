@@ -10,6 +10,7 @@ const routes = createRoutesFromElements(
     <Route path="/about" element={"About Us Page"}  />
     <Route path="/sermon" element={"Sermon Page"}  />
     <Route path="/blog" element={<BlogIndex />}  />
+    <Route path="/blog/:slug" element={"Blog Post Single Page"} />
     <Route path="*" element={<ErrorPage />}  />
   </Route>
 );
